@@ -1,8 +1,29 @@
 <script>
-    let clickCount = 0;
+    import PunishRow from "../components/PunishRow.svelte";
+    import ResultRow from "../components/ResultRow.svelte";
+    import NumberRow from "../components/NumberRow.svelte";
+    import Button from "../components/Button.svelte";
 
-    function handleClick(){
-        clickCount += 1;
+    let redRow;
+    let yellowRow;
+    let greenRow;
+    let blueRow;
+    let punishRow;
+    let resultRow;
+
+    // red, yellow, green, blue, punish
+    $:selects = [0, 0, 0, 0, 0];
+
+    function handleSelects(event) {
+        selects[event.detail.row] = event.detail.selects;
+    }
+
+    function reset() {
+        redRow.reset();
+        yellowRow.reset();
+        greenRow.reset();
+        blueRow.reset();
+        punishRow.reset();
     }
 </script>
 
@@ -12,20 +33,17 @@
 </svelte:head>
 
 <section>
-    <h1>A Test for something</h1>
-    <div class="text-white text-5xl flex flex-wrap justify-between">
-        <button type="button" class="bg-blue-500 h-40 w-40 rounded-2xl" on:click={handleClick}>1</button>
-        <button type="button" class="bg-blue-500 h-40 w-40 rounded-2xl" on:click={handleClick}>2</button>
-        <button type="button" class="bg-blue-500 h-40 w-40 rounded-2xl" on:click={handleClick}>3</button>
-        <button type="button" class="bg-blue-500 h-40 w-40 rounded-2xl" on:click={handleClick}>4</button>
-        <button type="button" class="bg-blue-500 h-40 w-40 rounded-2xl" on:click={handleClick}>5</button>
-        <button type="button" class="bg-blue-500 h-40 w-40 rounded-2xl" on:click={handleClick}>6</button>
-        <button type="button" class="bg-blue-500 h-40 w-40 rounded-2xl" on:click={handleClick}>7</button>
-        <button type="button" class="bg-blue-500 h-40 w-40 rounded-2xl" on:click={handleClick}>8</button>
-        <button type="button" class="bg-blue-500 h-40 w-40 rounded-2xl" on:click={handleClick}>9</button>
-        <button type="button" class="bg-blue-500 h-40 w-40 rounded-2xl" on:click={handleClick}>10</button>
-        <button type="button" class="bg-blue-500 h-40 w-40 rounded-2xl" on:click={handleClick}>11</button>
-        <button type="button" class="bg-blue-500 h-40 w-40 rounded-2xl" on:click={handleClick}>12</button>
+    <h1 class="text-5xl mb-5">Qwixx</h1>
+    <div class="rounded-2xl bg-gray-300 w-fit p-2 m-1">
+        <NumberRow bind:this={redRow} colorNumber="{0}" on:selects={handleSelects}></NumberRow>
+        <NumberRow bind:this={yellowRow} colorNumber="{1}" on:selects={handleSelects}></NumberRow>
+        <NumberRow bind:this={greenRow} colorNumber="{2}" reversed="{true}" on:selects={handleSelects}></NumberRow>
+        <NumberRow bind:this={blueRow} colorNumber="{3}" reversed="{true}" on:selects={handleSelects}></NumberRow>
+        <div class="flex justify-between">
+            <button type="button" class="rounded-2xl text-4xl h-20 p-1 m-2 bg-gray-500 text-white hover:bg-gray-700" on:click={reset}>Reset
+            </button>
+            <PunishRow bind:this={punishRow} on:selects={handleSelects}></PunishRow>
+        </div>
     </div>
-    <h1 class="text-4xl">Number of clicks is: {clickCount}</h1>
+    <ResultRow bind:this={resultRow} bind:selects={selects}></ResultRow>
 </section>
