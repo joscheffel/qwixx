@@ -2,7 +2,7 @@
     import PunishRow from "../components/PunishRow.svelte";
     import ResultRow from "../components/ResultRow.svelte";
     import NumberRow from "../components/NumberRow.svelte";
-    import Button from "../components/Button.svelte";
+    import DiceRow from "../components/DiceRow.svelte";
 
     let redRow;
     let yellowRow;
@@ -33,17 +33,14 @@
 </svelte:head>
 
 <section>
-    <h1 class="text-5xl mb-5">Qwixx</h1>
-    <div class="rounded-2xl bg-gray-300 w-fit p-2 m-1">
-        <NumberRow bind:this={redRow} colorNumber="{0}" on:selects={handleSelects}></NumberRow>
-        <NumberRow bind:this={yellowRow} colorNumber="{1}" on:selects={handleSelects}></NumberRow>
-        <NumberRow bind:this={greenRow} colorNumber="{2}" reversed="{true}" on:selects={handleSelects}></NumberRow>
-        <NumberRow bind:this={blueRow} colorNumber="{3}" reversed="{true}" on:selects={handleSelects}></NumberRow>
-        <div class="flex justify-between">
-            <button type="button" class="rounded-2xl text-4xl h-20 p-1 m-2 bg-gray-500 text-white hover:bg-gray-700" on:click={reset}>Reset
-            </button>
-            <PunishRow bind:this={punishRow} on:selects={handleSelects}></PunishRow>
+    <div class="flex flex-col justify-center content-center w-1/2">
+        <h1 class="text-5xl m-auto">Alles Gute Zum Geburtstag</h1>
+        <div class="m-auto">
+            <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+            <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_bXWwgY.json" background="transparent"
+                           speed="1" style="width: 700px; height: 700px;" loop autoplay></lottie-player>
         </div>
+        <a class="rounded-2xl border-2 border-emerald-500 text-black text-4xl m-auto p-2 text-center w-1/2 hover:bg-emerald-500 hover:text-white"
+           href="/qwixx">Öffne das Geschenk</a>
     </div>
-    <ResultRow bind:this={resultRow} bind:selects={selects}></ResultRow>
 </section>
