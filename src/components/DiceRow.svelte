@@ -21,6 +21,10 @@
         diceYellow = dice();
         diceGreen = dice();
         diceBlue = dice();
+
+        let number = diceWhiteOne + diceWhiteTwo;
+        let audio = new Audio(number + '.mp3');
+        audio.play();
     }
 </script>
 
