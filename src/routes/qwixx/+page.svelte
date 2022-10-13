@@ -73,7 +73,7 @@
 <section>
     <h1 class="text-5xl mb-5">Qwixx</h1>
     <DiceRow></DiceRow>
-    <div class="rounded-2xl bg-gray-300 w-fit p-2 m-1">
+    <div class="rounded-2xl bg-gray-300 w-fit p-2 m-1 mt-8">
         <NumberRow bind:this={redRow} colorNumber="{0}" on:selects={handleSelects}></NumberRow>
         <NumberRow bind:this={yellowRow} colorNumber="{1}" on:selects={handleSelects}></NumberRow>
         <NumberRow bind:this={greenRow} colorNumber="{2}" reversed="{true}" on:selects={handleSelects}></NumberRow>
