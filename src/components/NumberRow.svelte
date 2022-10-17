@@ -59,7 +59,7 @@
     }
 </script>
 
-<div class="text-white text-4xl flex flex-wrap p-0.5 m-0.5 mb-2">
+<div class="text-white text-4xl flex flex-wrap p-0.5 ml-0.5 mb-2">
     {#each buttons as button, i}
         {#if button.bNumber !== 13}
             <Button bNumber="{button.bNumber}" bind:clicked="{button.clicked}"
